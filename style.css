@@ -1,0 +1,71 @@
+/*
+Theme Name: My Custom Theme
+Author: Me
+Version: 1.0
+*/
+
+
+:root {
+    --primary-color: #F37B20;
+    --secondary-color: #A1A1A1;
+    --background-color: #FFFFFF;
+    --text-color: #000000;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 110px;
+    overflow: hidden;
+}
+.menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 64px;  
+}
+
+.menu-right {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.first {
+    width: 40px;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+.second {
+    width: 24px;
+    height: 4px;
+    background-color: var(--secondary-color);
+}
+.search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 157px;
+}
+.custom-link {
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    position: relative;
+    height: 100%;
+    padding-bottom: 5px;
+    position: relative;
+}
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+.menu a:hover::after {
+    transform: scaleX(1);
+}
