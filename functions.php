@@ -59,3 +59,19 @@ function add_custom_link_class($atts) {
     // Возвращаем массив атрибутов
     return $atts;
 }
+//Добавить миниатюру к посту блога
+add_theme_support('post-thumbnails');
+
+//Добавление sidebar
+function custom_sidebar() {
+    register_sidebar(array(
+        'name' => esc_html__('Sidebar', 'theme-custom'),
+        'id' => 'sidebar-blog',
+        'description' => __('Sidebar for blog posts', 'theme-custom'),
+        'before_widget' => '<div class="widget %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="widget-title">',
+        'after_title' => '</h2>',
+    ) );
+};
+add_action('widgets_init', 'custom_sidebar');

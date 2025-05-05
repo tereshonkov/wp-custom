@@ -1,2 +1,1 @@
-<?php get_header() ?>
-<?php get_footer() ?>
+<h2>404 index.php</h2>
