@@ -84,3 +84,51 @@ function custom_sidebar() {
     ) );
 };
 add_action('widgets_init', 'custom_sidebar');
+
+//Ренистрация нового типа ЗАПИСИ
+add_action( 'init', 'register_post_types' );
+
+function register_post_types(){
+
+	register_post_type( 'services', [
+		'taxonomies' => [], // post related taxonomies
+		'label'  => null,
+		'labels' => [
+			'name'               => 'Услуги', // Тут можно указать любое имя записей.
+			'singular_name'      => 'Услуга', // Тут указывается имя одной записи!.
+			'add_new'            => 'Добавить новую', // to add a new post.
+			'add_new_item'       => 'Добавить новую услугу', // title for a newly created post in the admin panel.
+			'edit_item'          => 'Редактировать услугу', // for editing post type.
+			'new_item'           => 'Новая услуга', // new post's text.
+			'view_item'          => 'Посмотреть услугу', // for viewing this post type.
+			'search_items'       => 'Найти услугу', // search for these post types.
+			'not_found'          => 'Услуг не найдено', // if search has not found anything.
+			'parent_item_colon'  => '', // for parents (for hierarchical post types).
+			'menu_name'          => 'Услуги', // Имя меню.
+		],
+		'description'         => '',
+		'public'              => true,
+		//'publicly_queryable'  => null, // depends on public
+		//'exclude_from_search' => null, // depends on public
+		'show_ui'             => true, // depends on public
+		//'show_in_nav_menus'   => null, // depends on public
+		'show_in_menu'        => true, // whether to in admin panel menu
+		//'show_in_admin_bar'   => null, // depends on show_in_menu.
+		'show_in_rest'        => null, // Add to REST API. WP 4.7.
+		'rest_base'           => null, // $post_type. WP 4.7.
+		'menu_position'       => null,
+		'menu_icon'           => null, // Добавить иконку (опционально).
+		'capability_type'   => 'post',
+		//'capabilities'      => 'post', // Array of additional rights for this post type.
+		//'map_meta_cap'      => null, // Set to true to enable the default handler for meta caps.
+		'hierarchical'        => false,
+		'supports'            => [ 'title', 'editor' ], // [ 'title', 'editor', 'author',
+														//   'thumbnail', 'excerpt', 'trackbacks',
+														//   'custom-fields', 'comments', 'revisions',
+														//   'page-attributes', 'post-formats' ]
+		'has_archive'         => true,
+		'rewrite'             => true,
+		'query_var'           => true,
+	] );
+
+}

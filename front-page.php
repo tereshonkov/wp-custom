@@ -45,13 +45,45 @@
 
 
     <div class="cards">
-      <div class="item1">
+
+            <?php
+            global $post;
+
+            $query = new WP_Query( [
+              'posts_per_page' => 3,
+              'post_type'      => 'services',
+            ] );
+
+            if ( $query->have_posts() ) {
+              while ( $query->have_posts() ) {
+                $query->the_post();
+                ?>
+          <div class="item1">
+      <img class="card-image" src="<?php echo get_field('image')?>" alt="card 1">
+        <div class="hover">
+          <h3 class="card-title"><?php echo get_field('title')?></h3>
+          <p class="card-subtitle"><?php echo get_field('subtitle')?></p>
+          <h3 class="card-title"><?php echo get_field('title-two')?></h3>
+          <div class="line-card"></div>
+          <div class="icon-card">
+          <img src="<?php echo get_template_directory_uri();?>/img/about/arrow-card.png" alt="arrow">
+          </div>
+        </div>
+      </div>
+                <?php
+              }
+            } else {
+              // No posts found
+            }
+
+            wp_reset_postdata(); // Reset $post
+            ?>
+
+      <!-- <div class="item1">
       <img class="card-image" src="<?php echo get_template_directory_uri();?>/img/about/card1.png" alt="card 1">
         <div class="hover">
           <h3 class="card-title">Project Plan</h3>
-          <p class="card-subtitle">Curabitur ullamcorper ultricies, tellus
-            rhoncus tempus eget condimentum,
-            sem quam semper libero</p>
+          <p class="card-subtitle">Curabitur ullamcorper ultricies, tellus rhoncus tempus eget condimentum, sem quam semper libero</p>
           <h3 class="card-title">Project Plan</h3>
           <div class="line-card"></div>
           <div class="icon-card">
@@ -86,7 +118,7 @@
           <img src="<?php echo get_template_directory_uri();?>/img/about/arrow-card.png" alt="arrow">
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <img class="logo-about" src="<?php echo get_template_directory_uri()?>/img/about/logo-about.png" alt="logo">
     <img src="<?php echo get_template_directory_uri()?>/img/about/plan-about.png" alt="plan" class="plan-about">
