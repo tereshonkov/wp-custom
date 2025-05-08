@@ -68,9 +68,18 @@ function custom_sidebar() {
         'name' => esc_html__('Sidebar', 'theme-custom'),
         'id' => 'sidebar-blog',
         'description' => __('Sidebar for blog posts', 'theme-custom'),
-        'before_widget' => '<div class="widget %2$s">',
+        'before_widget' => '<div class="sidebar %2$s">',
         'after_widget' => '</div>',
-        'before_title' => '<h2 class="widget-title">',
+        'before_title' => '<h2 class="header-categories">',
+        'after_title' => '</h2>',
+    ) );
+    register_sidebar(array(
+        'name' => esc_html__('Второй сайтбар', 'theme-custom'),
+        'id' => 'sidebar-second',
+        'description' => __('Sidebar for blog posts', 'theme-custom'),
+        'before_widget' => '<div class="sidebar %2$s">',
+        'after_widget' => '</div>',
+        'before_title' => '<h2 class="header-categories">',
         'after_title' => '</h2>',
     ) );
 };
